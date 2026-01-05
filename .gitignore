@@ -3,6 +3,13 @@ __pycache__/
 *.py[codz]
 *$py.class
 
+# video recording files & OBS
+*.mkv
+*.mp4
+*.mov
+obs-recordings/
+
+
 # C extensions
 *.so
 
