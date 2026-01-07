@@ -1,14 +1,20 @@
+GREEN = "\033[32m"   # X
+RED   = "\033[31m"   # O
+
 def tic_tac_toe():
     # Initialize the board
     board = [" " for _ in range(9)]
-    
-    def print_board():
-        # Print the board
-        print(board[0] + '|' + board[1] + '|' + board[2])
-        print('-+-+-')
-        print(board[3] + '|' + board[4] + '|' + board[5])
-        print('-+-+-')
-        print(board[6] + '|' + board[7] + '|' + board[8])
+
+def print_board(board):
+    for row in board:
+        for cell in row:
+            if cell == "X":
+                print(f"{GREEN}{cell}", end=" ")
+            elif cell == "O":
+                print(f"{RED}{cell}", end=" ")
+            else:
+                print(cell, end=" ")
+        print()
 
     def check_winner(mark):
         # Check all winning conditions for the given mark
@@ -28,7 +34,7 @@ def tic_tac_toe():
         # Main game loop
         current_mark = "X"
         while True:
-            print_board()
+            print_board(board)
             print(f"It's {current_mark}'s turn. Enter a position (1-9): ", end="")
             position = int(input()) - 1  # Adjust for 0-indexing
 
@@ -44,7 +50,7 @@ def tic_tac_toe():
                 print(f"Player {current_mark} wins!")
                 break
             if is_board_full():
-                print_board()
+                print_board(board)
                 print("It's a draw!")
                 break
 
