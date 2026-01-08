@@ -1,15 +1,27 @@
+ANSI_RED = "\u001b[31m" 
+ANSI_GREEN = "\u001b[32m"
+ANSI_RESET = "\u001b[0m"
+
+def format_mark(mark):
+    if mark == "X":
+        return f"{ANSI_RED}{mark}{ANSI_RESET}"
+    elif mark == "O":
+        return f"{ANSI_GREEN}{mark}{ANSI_RESET}"
+    return mark 
+
+
 def tic_tac_toe():
     # Initialize the board
     board = [" " for _ in range(9)]
     
     def print_board():
         # Print the board
-        print(board[0] + '|' + board[1] + '|' + board[2])
+        print(f"{format_mark(board[0])}|{format_mark(board[1])}|{format_mark(board[2])}")
         print('-+-+-')
-        print(board[3] + '|' + board[4] + '|' + board[5])
+        print(f"{format_mark(board[3])}|{format_mark(board[4])}|{format_mark(board[5])}")
         print('-+-+-')
-        print(board[6] + '|' + board[7] + '|' + board[8])
-
+        print(f"{format_mark(board[6])}|{format_mark(board[7])}|{format_mark(board[8])}")
+    
     def check_winner(mark):
         # Check all winning conditions for the given mark
         winning_conditions = [(0, 1, 2), (3, 4, 5), (6, 7, 8),  # rows
